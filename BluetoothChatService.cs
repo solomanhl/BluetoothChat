@@ -42,7 +42,7 @@ namespace BluetoothChat
 	
 		// Unique UUID for this application
 		//private static UUID MY_UUID = UUID.FromString ("fa87c0d0-afac-11de-8a39-0800200c9a66");
-		private static UUID MY_UUID = UUID.FromString("00001101-0000-1000-8000-00805F9B34FB");
+		private static UUID MY_UUID = UUID.FromString("00001101-0000-1000-8000-00805F9B34FB");  //À¶ÑÀ´®¿Ú·þÎñ
 		// Member fields
 		protected BluetoothAdapter _adapter;
 		protected Handler _handler;

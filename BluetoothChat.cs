@@ -285,7 +285,10 @@ namespace BluetoothChat
 					bluetoothChat.conversationArrayAdapter.Add (bluetoothChat.connectedDeviceName + ":  " + readMessage);
                         
                     //这里可以增加写本地和网络上传代码
-                    bluetoothChat.SaveRecToFile(bluetoothChat.connectedDeviceName + ":  " + readMessage);
+                    if ( bluetoothChat.SaveRecToFile(bluetoothChat.connectedDeviceName + ":  " + readMessage) !=0 ) //本地缓存
+                    {
+                        Toast.MakeText(Application.Context, "数据缓存失败", ToastLength.Short).Show();
+                    }
 
 					break;
 				case MESSAGE_DEVICE_NAME:
@@ -381,6 +384,7 @@ namespace BluetoothChat
             }
             catch(System.Exception e)
             {
+                e.ToString();
                 rtn = -1;
                 return rtn;
             }
