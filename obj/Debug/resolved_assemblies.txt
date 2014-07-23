@@ -1,0 +1,1 @@
+D:\Project\VS\BluetoothChat\bin\Debug\BluetoothChat.dll
