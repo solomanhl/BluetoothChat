@@ -285,7 +285,7 @@ namespace BluetoothChat
 					bluetoothChat.conversationArrayAdapter.Add (bluetoothChat.connectedDeviceName + ":  " + readMessage);
                         
                     //这里可以增加写本地和网络上传代码
-                    bluetoothChat.SaveRecToFile();
+                    bluetoothChat.SaveRecToFile(bluetoothChat.connectedDeviceName + ":  " + readMessage);
 
 					break;
 				case MESSAGE_DEVICE_NAME:
@@ -361,16 +361,19 @@ namespace BluetoothChat
 			return false;
 		}
 
-
+        
         // 写本地
-        public int SaveRecToFile()
+        public int SaveRecToFile(string txt)
         {
             int rtn = 0;    //0:正常，-1错误
-            string datadir = "/data/data/BluetoothChat.BluetoothChat/files/";
+            //string datadir = "/data/data/BluetoothChat.BluetoothChat/files/";
+            string dataDirectory = Android.OS.Environment.DataDirectory.Path;  //     "/data"
+            string packname = this.Application.PackageName; //  "BluetoothChat.BluetoothChat"
+            string datadir = dataDirectory + "/data/" + packname + "/files/";
             try
             {
-                StreamWriter writer = File.CreateText(datadir + "rec.txt");
-                writer.WriteLine("Out to file.");
+                StreamWriter writer = File.AppendText(datadir + "rec.txt");
+                writer.WriteLine(txt);
                 writer.Close();
 
                 rtn = 0;
